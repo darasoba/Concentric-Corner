@@ -1,40 +1,41 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Concentric Corners Figma Plugin
 
-  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
+A Figma plugin to automatically apply concentric corner radii to a nested layer based on its parent's corner radius and padding.
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
+## How it Works
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+The "Concentric Corners" plugin calculates and applies the appropriate corner radius to a child layer to make it appear concentric with its parent container. This is particularly useful for creating buttons, cards, and other UI elements where you want consistent, mathematically-correct corner radii on nested elements.
 
-  https://nodejs.org/en/download/
+The formula used for each corner is:
 
-Next, install TypeScript using the command:
+`ChildCornerRadius = ParentCornerRadius - Padding`
 
-  npm install -g typescript
+Where `Padding` is the shortest distance from the child's corner to the parent's corresponding corner (either vertical or horizontal padding).
 
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
+## How to Use
 
-  npm install --save-dev @figma/plugin-typings
+1.  **Select a Layer**: Select a single layer that is inside a parent frame or another layer with a corner radius.
+2.  **Run the Plugin**: Go to `Plugins > Concentric Corner` and click "Apply Concentric Corners".
+3.  **Done**: The plugin will automatically calculate and apply the correct corner radii to the selected layer.
 
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
+## Example
 
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+If you have a parent frame with a `40px` corner radius and a child layer inside it with `20px` padding on all sides, the plugin will set the child's corner radius to `20px` (`40px - 20px`).
 
-For more information, visit https://www.typescriptlang.org/
+## Installation
 
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
+1.  Clone this repository or download the source code.
+2.  Open Figma, go to `Plugins > Development > New Plugin...`.
+3.  Click "Link existing plugin" and choose the `manifest.json` file from this repository.
+4.  The plugin will now be available in your `Plugins > Development` menu.
 
-We recommend writing TypeScript code using Visual Studio code:
+## Development
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "npm: watch". You will have to do this again every time
-    you reopen Visual Studio Code.
+This plugin is built with TypeScript.
 
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+-   Run `npm install` to install dependencies.
+-   Run `npm run watch` to compile TypeScript to JavaScript on file changes.
+
+## Contributing
+
+Contributions are welcome! If you have a feature request, bug report, or want to contribute to the code, please feel free to open an issue or submit a pull request on the GitHub repository.
