@@ -39,3 +39,7 @@ This plugin is built with TypeScript.
 ## Contributing
 
 Contributions are welcome! If you have a feature request, bug report, or want to contribute to the code, please feel free to open an issue or submit a pull request on the GitHub repository.
+
+## License
+
+This plugin is released under the MIT License. See the [LICENSE](LICENSE) file for details.
