@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentric Corners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--figma-color-bg);
+            color: var(--figma-color-text);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .container {
+            padding: 24px;
+            padding-bottom: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(140deg, #74B9FF 7.21%, #0984E3 93.56%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .logo svg {
+            width: 24px;
+            height: 24px;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--figma-color-text-secondary);
+            max-width: 280px;
+            margin-bottom: 24px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(140deg, #74B9FF 7.21%, #0984E3 93.56%);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 2px 8px rgba(9, 132, 227, 0.3);
+        }
+        button:hover {
+            background: linear-gradient(140deg, #5DAEFF 7.21%, #0875C8 93.56%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8C14 5.79086 12.2091 4 10 4H6C4.89543 4 4 4.89543 4 6V10C4 12.2091 5.79086 14 8 14H10C12.2091 14 14 12.2091 14 10V8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 14C20 11.7909 18.2091 10 16 10H12C10.8954 10 10 10.8954 10 12V16C10 18.2091 11.7909 20 14 20H16C18.2091 20 20 18.2091 20 16V14Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <!-- Content -->
+        <h1>Concentric Corners</h1>
+        <p>Select a single layer nested inside a parent frame. This plugin will automatically adjust the child's corner radius to be perfectly concentric with its parent.</p>
+        
+        <!-- Action Button -->
+        <button id="applyButton">Apply Concentric Corners</button>
+        
+    </div>
+
+    <script>
+        // --- Communication with the plugin's main code ---
+        const applyButton = document.getElementById('applyButton');
+
+        // When the "Apply" button is clicked, send a message to code.js
+        applyButton.onclick = () => {
+            parent.postMessage({ pluginMessage: { type: 'apply-corners' } }, '*');
+        };
+    </script>
+</body>
+</html>
